@@ -26,11 +26,18 @@ def ping(): # This is our first function! It will respond to server Pings.
   irc.send('PONG ' + text.split() [1] + '\r\n') #returnes 'PONG' back to the server (prevents pinging out!) 
 
 def privmsg(nick,destination,message,st):
-  print text;	
-  print "%s %s -> %s  %s" %(st,nick,destination,message); 
+  #print text;	
+  print "%s %s -> %s: %s" %(st,nick,destination,message); 
+  f.write("%s %s -> %s: %s\n" %(st,nick,destination,message));
 
 def topic(nick,destination,message,st):
   print "%s TOPIC changed %s -> %s to -> %s" %(st,nick,destination,message); 
+  #f.write("%s TOPIC changed %s -> %s to -> %s\n" %(st,nick,destination,message))
+
+f = open(channel+".log",'a');
+f.write("\n\n### BEGIN LOGGING ####\n\n"); 
+
+
 
 while 1:    #puts it in a loop
    ts = time.time()
